@@ -1,0 +1,36 @@
+<div class="Container">
+  <form (ngSubmit)="handleAddCustomer(g)" #g="ngForm">
+    <input type='text' placeholder='Nome do cliente' [(ngModel)]="name" name="name"  />
+    <div class='CheckboxDiv'>
+      <input class='checkbox' type='checkbox' id='tip' [(ngModel)]="tip" name="tip" />
+      <label for="tip">Marque ao lado caso o cliente queira pagar os 10% do serviço</label>
+    </div>
+    <button class='btn' type='submit' [disabled]="!name">
+      Adicionar Cliente
+    </button>
+    <p class='CustomerMensage'>
+      {{this.mensage}}
+    </p>
+  </form>
+  <form (ngSubmit)="handleAddItem(f)" #f="ngForm" >
+    <input id='name' type='text' placeholder='Nome do item' [(ngModel)]="item.name" name="name" />
+    <input id='price' type='number' placeholder='Valor do Item' [(ngModel)]="item.price" name="price"  />
+    <input id='amount' type='number' placeholder='Quantidade total consumida' [(ngModel)]="item.amount" name="amount"  />
+    <p>Marque abaixo quem consumiu o item</p>
+    <div class='CheckboxDiv' *ngFor="let customer of this.customerList">
+      <input class='checkbox' type='checkbox' [checked]="customer.isSelected" (change)="customer.isSelected = !customer.isSelected"/>
+      <label for="customer.customerName">{{customer.customerName}}</label>
+    </div>
+    <button class='btn' type='submit' [disabled]="!item.name || !item.price || !item.amount">
+      Adicionar Item
+    </button>
+    <p class='ItemMensage'>
+      {{this.mensage}}
+    </p>
+  </form>
+  <div class='ButtonsContainer'>
+    <button class='btn' (click)="this.handleGetResult()" [disabled]="this.customerList.length == 0" >
+      Calcular Total
+    </button>
+  </div>
+</div>

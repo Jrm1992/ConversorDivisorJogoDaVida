@@ -1,0 +1,21 @@
+<div class="Container">
+  <table class="table">
+    <tr class="row header">
+      <td class="cell">Nome</td>
+      <td class="cell">Total</td>
+      <td class="cell">Items Consumidos</td>
+    </tr>
+    <tr class="row" *ngFor="let customer of customerList">
+      <td class="cell">{{customer.customerName}}</td>
+      <td class="cell">{{customer.customerTotal | currency }}</td>
+      <td class="cell">
+        <span *ngFor="let item of customer.items; let last = last">{{item.name}}{{ last ? ' ' : ', ' }}</span>
+      </td>
+    </tr>
+  </table>
+  <div class='ButtonsContainer'>
+    <button class='btn' (click)="handleNewCalc()" >
+      Novo Calculo
+    </button>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="Container">
+  <div class='HowToUse'>
+    <h3>Conversor de Números Romanos</h3>
+    <br/>
+    <p>
+    O conversor de números romanos permite converter algarismos
+    decimais entre 1 e 3999 em algarismos romanos e vice-versa.
+    </p>
+  </div>
+
+  <div class='InputDiv'>
+    <span>Numero Decimal entre 1 e 3999 : </span>
+    <form (ngSubmit)="integerToRoman()">
+      <input type="number" placeholder="Digite um numero decimal" id="integer" [(ngModel)]="integer" name="integer" />
+      <p class='IntegerError' [ngStyle]="{'display': IntegerError ? 'flex' : 'none'}">
+        Valor Invalido. Por favor, digite um valor entre 1 e 3999
+      </p>
+      <button class='btn' type="submit">Converter para romano</button>
+    </form>
+  </div>
+
+  <div class='InputDiv'>
+    <span>Numero Romano : </span>
+    <form (ngSubmit)="romanToInteger()">
+      <input type="text" placeholder="Digite um numero romano" id="roman" [(ngModel)]="roman" name="roman"/>
+      <p class='RomanError' [ngStyle]="{'display': RomanError ? 'flex' : 'none'}">
+        Valor invalido. Por favor, digite um numero romano valido
+      </p>
+      <button class='btn' type="submit" >Converter para decimal</button>
+    </form>
+  </div>
+
+</div>
